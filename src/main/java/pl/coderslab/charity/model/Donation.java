@@ -1,9 +1,6 @@
 package pl.coderslab.charity.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,10 +21,7 @@ pickUpComment (String)
  */
 
 @Entity
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 public class Donation {
 
     @Id
