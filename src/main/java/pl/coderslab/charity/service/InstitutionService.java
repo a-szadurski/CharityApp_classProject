@@ -8,7 +8,7 @@ import pl.coderslab.charity.repository.InstitutionRepository;
 import java.util.List;
 
 @Service
-public class InstitutionService implements IInstitutionService{
+public class InstitutionService implements IInstitutionService {
 
     private final InstitutionRepository institutionRepository;
 
@@ -17,7 +17,7 @@ public class InstitutionService implements IInstitutionService{
     }
 
     @Override
-    public List<Institution> findAll(Sort sort) {
-        return institutionRepository.findAll(sort);
+    public List<Institution> findAllSortAscById() {
+        return institutionRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 }
