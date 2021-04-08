@@ -19,7 +19,7 @@ public class HomeController {
 
     private final InstitutionService institutionService;
     private final DonationService donationService;
-    Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     public HomeController(InstitutionService institutionService, DonationService donationService) {
         this.institutionService = institutionService;
@@ -31,10 +31,15 @@ public class HomeController {
 
         List<Institution> institutionList = institutionService.findAllSortAscById();
         Integer quantityTotal = donationService.quantityTotal();
+        Integer donationSum = donationService.donationSum();
 
         model.addAttribute("institutions", institutionList);
         model.addAttribute("quantityTotal", quantityTotal);
-        logger.debug("display institutions debug: {}", institutionList);
+        model.addAttribute("donationSum", donationSum);
+
+        logger.debug("institutionList: {}", institutionList);
+        logger.debug("quantityTotal: {}", quantityTotal);
+        logger.debug("donationSum: {}", donationSum);
 
         return "index";
     }
