@@ -33,6 +33,10 @@ public class HomeController {
         Integer quantityTotal = donationService.quantityTotal();
         Integer donationSum = donationService.donationSum();
 
+        if(quantityTotal == null){
+            quantityTotal = 0;
+        }
+
         model.addAttribute("institutions", institutionList);
         model.addAttribute("quantityTotal", quantityTotal);
         model.addAttribute("donationSum", donationSum);

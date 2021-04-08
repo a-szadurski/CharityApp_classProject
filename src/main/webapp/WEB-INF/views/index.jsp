@@ -1,19 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
 
-    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
-</head>
-<body>
+<%@ include file="header.jsp" %>
 <header class="header--main-page">
     <%@ include file="navbar.jsp" %>
 
@@ -81,7 +72,7 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-            <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
     </div>
     <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
     </div>
@@ -98,18 +89,18 @@
         <ul class="help--slides-items">
 
             <c:forEach items="${institutions}" begin="0" end="${fn:length(institutions)}" varStatus="i" step="2">
-            <li>
-                <div class="col">
-                    <div class="title">${institutions[i.index].name}</div>
-                    <div class="subtitle">${institutions[i.index].description}</div>
-                </div>
-                <c:if test="${i.index < (fn:length(institutions)/2 + 1)}">
-                <div class="col">
-                    <div class="title">${institutions[i.index+1].name}</div>
-                    <div class="subtitle">${institutions[i.index+1].description}</div>
-                </div>
-                </c:if>
-            </li>
+                <li>
+                    <div class="col">
+                        <div class="title">${institutions[i.index].name}</div>
+                        <div class="subtitle">${institutions[i.index].description}</div>
+                    </div>
+                    <c:if test="${i.index < (fn:length(institutions)/2 + 1)}">
+                        <div class="col">
+                            <div class="title">${institutions[i.index+1].name}</div>
+                            <div class="subtitle">${institutions[i.index+1].description}</div>
+                        </div>
+                    </c:if>
+                </li>
             </c:forEach>
 
         </ul>
