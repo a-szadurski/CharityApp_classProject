@@ -7,19 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-/*
-id
-quantity (liczba worków) (Integer)
-categories (lista obiektów typu Category), pamiętaj o odpowiedniej adnotacji
-institution (obiekt typu Institution), pamiętaj o odpowiedniej adnotacji.
-street (String)
-city (String)
-zipCode (String)
-pickUpDate (LocalDate)
-pickUpTime (LocalTime)
-pickUpComment (String)
- */
-
 @Entity
 @Data
 public class Donation {
