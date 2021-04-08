@@ -31,7 +31,7 @@ public class HomeController {
 
         List<Institution> institutionList = institutionService.findAllSortAscById();
         Integer quantityTotal = donationService.quantityTotal();
-        Integer donationSum = donationService.donationSum();
+        Integer donationSum = donationService.donationsDeliveredCount();
 
         if(quantityTotal == null){
             quantityTotal = 0;

@@ -4,5 +4,5 @@ public interface IDonationService {
 
     Integer quantityTotal();
 
-    Integer donationSum();
+    Integer donationsDeliveredCount();
 }

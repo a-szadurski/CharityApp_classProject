@@ -18,7 +18,7 @@ public class DonationService implements IDonationService {
     }
 
     @Override
-    public Integer donationSum() {
-        return donationRepository.countAllByPickupDateIsNotNullAndPickupTimeIsNotNullAndPickupCommentIsNotNull();
+    public Integer donationsDeliveredCount() {
+        return donationRepository.donationsDeliveredCount();
     }
 }
