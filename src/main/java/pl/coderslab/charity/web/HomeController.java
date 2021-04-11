@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.dto.InstitutionDto;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -29,7 +30,7 @@ public class HomeController {
     @GetMapping
     public String homeAction(Model model) {
 
-        List<Institution> institutionList = institutionService.findAllSortAscById();
+        List<InstitutionDto> institutionList = institutionService.findAllSortAscById();
         Integer quantityTotal = donationService.quantityTotal();
         Integer donationSum = donationService.donationsDeliveredCount();
 
