@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.CategoryDto;
+import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.service.CategoryService;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class DonationController {
         log.debug("categories: {}", categories);
 
         model.addAttribute("categories", categories);
+        model.addAttribute("donation", new DonationDto());
 
 
         return "form";

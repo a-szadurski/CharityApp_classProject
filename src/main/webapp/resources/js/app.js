@@ -171,4 +171,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+  $('.springcheckbox').unbind('click').bind('click', function() {
+    if ($(this).hasClass('active')) {
+      $(this).css('background-color', 'white');
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $(this).css('background-color', '#f9c910');
+    }
+  });
 });
