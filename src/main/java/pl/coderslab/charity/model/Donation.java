@@ -1,6 +1,7 @@
 package pl.coderslab.charity.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,7 +10,30 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Donation {
+
+    public Donation(Integer quantity,
+                       String street,
+                       String city,
+                       String zipCode,
+                       LocalDate pickupDate,
+                       LocalTime pickupTime,
+                       String pickupComment,
+                       String phoneNumber,
+                       List<Category> categories,
+                       Institution institution) {
+        this.quantity = quantity;
+        this.street = street;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.pickupDate = pickupDate;
+        this.pickupTime = pickupTime;
+        this.pickupComment = pickupComment;
+        this.phoneNumber = phoneNumber;
+        this.categories = categories;
+        this.institution = institution;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +46,12 @@ public class Donation {
     private LocalDate pickupDate;
     private LocalTime pickupTime;
     private String pickupComment;
+    private String phoneNumber;
 
     @OneToMany
     private List<Category> categories;
 
-    @OneToOne
+    @ManyToOne
     private Institution institution;
 
 

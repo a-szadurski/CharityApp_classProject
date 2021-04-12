@@ -3,16 +3,14 @@ package pl.coderslab.charity.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.coderslab.charity.model.Category;
-import pl.coderslab.charity.model.Institution;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class DonationDto {
 
     private Long id;
@@ -24,9 +22,9 @@ public class DonationDto {
     private LocalDate pickupDate;
     private LocalTime pickupTime;
     private String pickupComment;
+    private String phoneNumber;
 
+    private List<CategoryDto> categories;
 
-    private List<Category> categories;
-
-    private Institution institution;
+    private InstitutionDto institution;
 }
