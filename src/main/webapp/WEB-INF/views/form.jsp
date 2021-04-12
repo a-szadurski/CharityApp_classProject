@@ -90,7 +90,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1"/>
+                        <form:input type="number" step="1" min="1" default="1" path="quantity"/>
                     </label>
                 </div>
 
@@ -107,7 +107,7 @@
 
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old"/>
+                        <form:radiobutton path="institution" cssClass="institution ${inst.name}" value="${inst}" />
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">Fundacja “Bez domu”</div>

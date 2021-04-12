@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.dto.CategoryDto;
 import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.service.CategoryService;
 
 import java.util.List;
+
 
 @Slf4j
 @Controller
