@@ -2,6 +2,7 @@ package pl.coderslab.charity.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.CategoryDto;
+import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.repository.CategoryRepository;
 
 import java.util.List;
@@ -21,5 +22,11 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findAll().stream()
                 .map(c -> new CategoryDto(c.getId(), c.getName()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public CategoryDto findById(Long id) {
+        Category category = categoryRepository.findCategoryById(id);
+        return new CategoryDto(category.getId(), category.getName());
     }
 }

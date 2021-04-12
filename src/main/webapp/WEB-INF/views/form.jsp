@@ -72,7 +72,7 @@
                             <span class="checkbox springcheckbox"></span>
                             <form:checkbox
                                     cssClass="things ${category.name}"
-                                    value="${category}"
+                                    value="${category.id}"
                                     path="categories"
                                     label="${category.name}" onclick="noResult" />
                         </label>
@@ -107,7 +107,7 @@
                 <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <form:radiobutton name="organization" path="institution" value="${institution}" />
+                        <form:radiobutton name="organization" path="institution" value="${institution.id}" />
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">${institution.name}</div>

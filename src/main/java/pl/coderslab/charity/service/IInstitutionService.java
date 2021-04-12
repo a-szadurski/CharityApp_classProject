@@ -7,4 +7,6 @@ import java.util.List;
 public interface IInstitutionService {
 
     List<InstitutionDto> findAllSortAscById();
+
+    InstitutionDto findById(Long id);
 }

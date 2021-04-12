@@ -13,16 +13,32 @@ import java.util.List;
 @NoArgsConstructor
 public class Donation {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Integer quantity;
+    private String street;
+    private String city;
+    private String zipCode;
+    private LocalDate pickupDate;
+    private LocalTime pickupTime;
+    private String pickupComment;
+    private String phoneNumber;
+    @OneToMany
+    private List<Category> categories;
+    @ManyToOne
+    private Institution institution;
+
     public Donation(Integer quantity,
-                       String street,
-                       String city,
-                       String zipCode,
-                       LocalDate pickupDate,
-                       LocalTime pickupTime,
-                       String pickupComment,
-                       String phoneNumber,
-                       List<Category> categories,
-                       Institution institution) {
+                    String street,
+                    String city,
+                    String zipCode,
+                    LocalDate pickupDate,
+                    LocalTime pickupTime,
+                    String pickupComment,
+                    String phoneNumber,
+                    List<Category> categories,
+                    Institution institution) {
         this.quantity = quantity;
         this.street = street;
         this.city = city;
@@ -34,25 +50,6 @@ public class Donation {
         this.categories = categories;
         this.institution = institution;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private Integer quantity;
-    private String street;
-    private String city;
-    private String zipCode;
-    private LocalDate pickupDate;
-    private LocalTime pickupTime;
-    private String pickupComment;
-    private String phoneNumber;
-
-    @OneToMany
-    private List<Category> categories;
-
-    @ManyToOne
-    private Institution institution;
 
 
 }

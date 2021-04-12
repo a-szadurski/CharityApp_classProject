@@ -50,11 +50,11 @@ public class DonationController {
     }
 
     @PostMapping
-    public String formSubmit(@ModelAttribute("donation") DonationDto donation, BindingResult result){
+    public String formSubmit(@ModelAttribute("donation") DonationDto donation, BindingResult result) {
 
         log.debug("donationDtoSaveDebug: {}", donation);
 
-//        donationService.saveDonation(donationDto);
+        donationService.saveDonation(donation);
 
         return "redirect:/user/form-confirmation";
     }
