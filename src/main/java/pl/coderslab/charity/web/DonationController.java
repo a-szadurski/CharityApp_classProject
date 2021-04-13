@@ -60,7 +60,7 @@ public class DonationController {
     }
 
     @GetMapping("/confirm")
-    public String formConfirm(){
+    public String formConfirm() {
         return "form-confirmation";
     }
 
