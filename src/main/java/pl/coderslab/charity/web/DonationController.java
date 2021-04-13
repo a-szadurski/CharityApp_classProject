@@ -56,7 +56,12 @@ public class DonationController {
 
         donationService.saveDonation(donation);
 
-        return "redirect:/user/form-confirmation";
+        return "redirect:/user/donate/confirm";
+    }
+
+    @GetMapping("/confirm")
+    public String formConfirm(){
+        return "form-confirmation";
     }
 
 }
