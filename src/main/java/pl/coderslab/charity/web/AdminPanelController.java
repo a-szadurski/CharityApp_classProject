@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminPanelController {
 
     @GetMapping
-    public String displayAdminPanelHome(){
+    public String displayAdminPanelHome() {
         return "admin-home";
     }
 }
