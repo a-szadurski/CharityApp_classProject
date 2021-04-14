@@ -181,4 +181,30 @@ document.addEventListener("DOMContentLoaded", function() {
       $(this).css('background-color', '#f9c910');
     }
   });
+
+  $('.donate-summaryBtn').click(function () {
+    let thingsJoined = "";
+    $('input[type=checkbox]:checked').each(function() {
+      thingsJoined +=($(this).attr('class').replace('category ','')) + "<br>";
+    })
+    $('#summaryThings').html(thingsJoined);
+    $('#summaryQuantity').text($('.donate-quantity').val());
+    const institution = $('input[type=radio]:checked').attr('class').replace('institution ', '');
+    $('#summaryInstitution').text(institution);
+    //
+    $('#summaryStreet').text($('.donate-street').val());
+    //
+    $('#summaryCity').text($('.donate-city').val());
+    //
+    $('#summaryZipcode').text($('.donate-zipcode').val());
+    //
+    $('#summaryPhone').text($('.donate-phone').val());
+    //
+    $('#summaryPickupDate').text($('.donate-pickupdate').val());
+    //
+    $('#summaryPickupTime').text($('.donate-pickuptime').val());
+    //
+    $('#summaryPickupComment').text($('.donate-pickupcomment').val());
+  });
+
 });

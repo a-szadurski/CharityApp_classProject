@@ -71,7 +71,7 @@
                         <label>
                             <span class="checkbox springcheckbox"></span>
                             <form:checkbox
-                                    cssClass="things ${category.name}"
+                                    cssClass="category ${category.name}"
                                     value="${category.id}"
                                     path="categories"
                                     label="${category.name}" onclick="noResult" />
@@ -90,7 +90,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input type="number" step="1" min="1" default="1" path="quantity"/>
+                        <form:input type="number" cssClass="donate-quantity" step="1" min="1" default="1" path="quantity"/>
                     </label>
                 </div>
 
@@ -107,7 +107,7 @@
                 <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <form:radiobutton name="organization" path="institution" value="${institution.id}" />
+                        <form:radiobutton cssClass="institution ${institution.name}" path="institution" value="${institution.id}" />
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">${institution.name}</div>
@@ -132,22 +132,22 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input type="text" name="address" path="street"/> </label>
+                            <label> Ulica <form:input type="text" cssClass="donate-street" path="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input type="text" name="city" path="city"/> </label>
+                            <label> Miasto <form:input type="text" cssClass="donate-city" path="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input type="text" name="postcode" path="zipCode"/>
+                                Kod pocztowy <form:input type="text" cssClass="donate-zipcode" path="zipCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <form:input type="phone" name="phone" path="phoneNumber"/>
+                                Numer telefonu <form:input type="phone" cssClass="donate-phone" path="phoneNumber"/>
                             </label>
                         </div>
                     </div>
@@ -155,24 +155,24 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" name="data" path="pickupDate"/></label>
+                            <label> Data <form:input type="date" cssClass="donate-pickupdate" path="pickupDate"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" name="time" path="pickupTime"/></label>
+                            <label> Godzina <form:input type="time" cssClass="donate-pickuptime" path="pickupTime"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea name="more_info" rows="5" path="pickupComment"/>
+                                <form:textarea cssClass="donate-pickupcomment" rows="5" path="pickupComment"/>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step donate-summaryBtn">Dalej</button>
                 </div>
             </div>
 
@@ -182,20 +182,17 @@
 
                 <div class="summary">
                     <div class="form-section">
-                        <h4>Oddajesz:</h4>
+                        <h4>Oddajesz worków: <span id="summaryQuantity"></span> </h4>
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span id="summaryThings"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                >Dla <span id="summaryInstitution"></span> </span>
                             </li>
                         </ul>
                     </div>
@@ -204,19 +201,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li><span id="summaryStreet"></span></li>
+                                <li><span id="summaryCity"></span></li>
+                                <li><span id="summaryZipcode"></span></li>
+                                <li><span id="summaryPhone"></span></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li><span id="summaryPickupDate"></span></li>
+                                <li><span id="summaryPickupTime"></span></li>
+                                <li><span id="summaryPickupComment"></span></li>
                             </ul>
                         </div>
                     </div>
