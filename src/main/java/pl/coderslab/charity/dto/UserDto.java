@@ -15,13 +15,12 @@ import javax.validation.constraints.Size;
 @PasswordMatches
 public class UserDto {
 
-    @NotNull
-    @Size(min = 1, message = "{Size.userDto.firstName}")
-    private String firstName;
+    private Long id;
 
+    @ValidEmail
     @NotNull
-    @Size(min = 1, message = "{Size.userDto.lastName}")
-    private String lastName;
+    @Size(min = 1, message = "{Size.userDto.email}")
+    private String email;
 
     @NotNull(message = "{NotEmpty.user.password}")
     @Size(min = 8, max = 25)
@@ -30,10 +29,5 @@ public class UserDto {
     @NotNull(message = "{NotEmpty.user.matchingPassword}")
     @Size(min = 8, max = 25)
     private String matchingPassword;
-
-    @ValidEmail
-    @NotNull
-    @Size(min = 1, message = "{Size.userDto.email}")
-    private String email;
 
 }

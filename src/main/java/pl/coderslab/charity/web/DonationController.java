@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.CategoryDto;
 import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.dto.InstitutionDto;
-import pl.coderslab.charity.service.CategoryService;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.CategoryServiceImpl;
+import pl.coderslab.charity.service.DonationServiceImpl;
+import pl.coderslab.charity.service.InstitutionServiceImpl;
 
 import java.util.List;
 
@@ -22,11 +22,11 @@ import java.util.List;
 @RequestMapping("/user/donate")
 public class DonationController {
 
-    private final CategoryService categoryService;
-    private final InstitutionService institutionService;
-    private final DonationService donationService;
+    private final CategoryServiceImpl categoryService;
+    private final InstitutionServiceImpl institutionService;
+    private final DonationServiceImpl donationService;
 
-    public DonationController(CategoryService categoryService, InstitutionService institutionService, DonationService donationService) {
+    public DonationController(CategoryServiceImpl categoryService, InstitutionServiceImpl institutionService, DonationServiceImpl donationService) {
         this.categoryService = categoryService;
         this.institutionService = institutionService;
         this.donationService = donationService;
@@ -60,7 +60,7 @@ public class DonationController {
     }
 
     @GetMapping("/confirm")
-    public String formConfirm(){
+    public String formConfirm() {
         return "form-confirmation";
     }
 

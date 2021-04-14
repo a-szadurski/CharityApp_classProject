@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.InstitutionDto;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.DonationServiceImpl;
+import pl.coderslab.charity.service.InstitutionServiceImpl;
 
 import java.util.List;
 
@@ -17,11 +17,11 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
-    private final InstitutionService institutionService;
-    private final DonationService donationService;
+    private final InstitutionServiceImpl institutionService;
+    private final DonationServiceImpl donationService;
     private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    public HomeController(InstitutionService institutionService, DonationService donationService) {
+    public HomeController(InstitutionServiceImpl institutionService, DonationServiceImpl donationService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
     }

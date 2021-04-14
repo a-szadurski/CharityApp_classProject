@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SpringDataUserDetailsService();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler AuthenticationSuccessHandlerCustom() {
+        return new AuthenticationSuccessHandlerCustom();
+    }
+
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
@@ -30,15 +37,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/user/main")
+                .successHandler(AuthenticationSuccessHandlerCustom())
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout=true")
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/logout")
+                .and().exceptionHandling().accessDeniedPage("/login")
                 .and()
                 .csrf()
                 .disable();
