@@ -22,12 +22,17 @@ public class LoginController {
                             @RequestParam(value = "logout", required = false) String logout,
                             Model model) {
 
-        final String redirect = "redirect:/user/donate";
+        final String redirectUser = "redirect:/user/donate";
+        final String redirectAdmin = "redirect:/admin";
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
 
-            return redirect;
+        if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))) {
+            return redirectUser;
+        }
+
+        if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+            return redirectAdmin;
         }
 
         String errorMessage = null;
