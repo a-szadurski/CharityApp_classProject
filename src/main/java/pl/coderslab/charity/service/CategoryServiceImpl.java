@@ -21,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDto> findAll() {
         return categoryRepository.findAll().stream()
-                .map(c -> new CategoryDto(c.getId(), c.getName()))
+                .map(c -> new CategoryDto(c.getId(), c.getName())) //konstruktor przyjmujący Category model
                 .collect(Collectors.toList());
     }
 

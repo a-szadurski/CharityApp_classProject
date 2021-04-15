@@ -24,8 +24,10 @@ public class Donation {
     private LocalTime pickupTime;
     private String pickupComment;
     private String phoneNumber;
-    @OneToMany
+
+    @ManyToMany
     private List<Category> categories;
+
     @ManyToOne
     private Institution institution;
 
