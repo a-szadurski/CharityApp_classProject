@@ -58,6 +58,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDto> findAllSuperUsers() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_ADMIN"));
+        return userRepository.findAllByRolesIn(roles).stream()
+                .map(user -> new UserDto(
+                        user.getId(), user.getEmail(), user.isEnabled()
+                )).collect(Collectors.toList());
+    }
+
+    @Override
     public void updateUser(UserDto userDto) {
 
         if (emailExists(userDto.getEmail())) {
