@@ -48,6 +48,7 @@ public class AdminUsersCrudController {
 
         UserDto userDto = userService.findById(id);
         log.debug("{} user by id: {}", this.getClass(), userDto);
+        userDto.setPassword(null);
         model.addAttribute("user", userDto);
         return "admin/user-update";
     }

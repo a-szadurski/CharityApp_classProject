@@ -5,10 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <header class="header--form-page">
 
-    <%@ include file="navbar.jsp" %>
+    <%@ include file="../navbar.jsp" %>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -232,7 +232,7 @@
     </div>
 </section>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
 
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>
