@@ -5,6 +5,7 @@ import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public void saveDonation(DonationDto donationDto) {
+    public void saveDonation(DonationDto donationDto, User user) {
 
         List<Category> categories = donationDto.getCategories().stream()
                 .map(Category::new)
@@ -38,6 +39,6 @@ public class DonationServiceImpl implements DonationService {
 
         Institution institution = new Institution(donationDto.getInstitution());
 
-        donationRepository.save(new Donation(donationDto, categories, institution));
+        donationRepository.save(new Donation(donationDto, categories, institution, user));
     }
 }

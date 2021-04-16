@@ -1,6 +1,7 @@
 package pl.coderslab.charity.service;
 
 import pl.coderslab.charity.dto.DonationDto;
+import pl.coderslab.charity.model.User;
 
 public interface DonationService {
 
@@ -8,5 +9,5 @@ public interface DonationService {
 
     Integer donationsDeliveredCount();
 
-    void saveDonation(DonationDto donationDto);
+    void saveDonation(DonationDto donationDto, User user);
 }

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -34,29 +35,10 @@ public class Donation {
     @ManyToOne
     private Institution institution;
 
-    public Donation(Integer quantity,
-                    String street,
-                    String city,
-                    String zipCode,
-                    LocalDate pickupDate,
-                    LocalTime pickupTime,
-                    String pickupComment,
-                    String phoneNumber,
-                    List<Category> categories,
-                    Institution institution) {
-        this.quantity = quantity;
-        this.street = street;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.pickupDate = pickupDate;
-        this.pickupTime = pickupTime;
-        this.pickupComment = pickupComment;
-        this.phoneNumber = phoneNumber;
-        this.categories = categories;
-        this.institution = institution;
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private User user;
 
-    public Donation(DonationDto donationDto, List<Category> categories, Institution institution) {
+    public Donation(DonationDto donationDto, List<Category> categories, Institution institution, User user) {
         this.id = donationDto.getId();
         this.quantity = donationDto.getQuantity();
         this.street = donationDto.getStreet();
@@ -67,6 +49,7 @@ public class Donation {
         this.pickupComment = donationDto.getPickupComment();
         this.categories = categories;
         this.institution = institution;
+        this.user = user;
     }
 
 
