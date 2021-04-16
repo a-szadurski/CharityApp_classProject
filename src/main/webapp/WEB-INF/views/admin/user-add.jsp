@@ -15,23 +15,38 @@
         Dodaj użytkownika:
     </h2>
 </div>
-<section class="login-page">
-    <h2>Załóż konto</h2>
+<div class="w3-container">
     <form:form method="post" modelAttribute="user">
-        <div class="form-group">
-            <form:input type="email" path="email" name="email" placeholder="Email"/>
-        </div>
-        <div class="form-group">
-            <form:input path="password" type="password" name="password" placeholder="Hasło"/>
-        </div>
-        <div class="form-group">
-            <form:input path="matchingPassword" type="password" name="password2" placeholder="Powtórz hasło"/>
-        </div>
-
-        <div class="form-group form-group--buttons">
-            <button class="btn" type="submit">Utwórz</button>
-        </div>
+        <table class="w3-table-all">
+            <tbody>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <form:input type="email" path="email" name="email" placeholder="Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Hasło</td>
+                <td>
+                        <form:input path="password" type="password" name="password" placeholder="Hasło"/>
+                </td>
+            <tr>
+                <td>Powtórz hasło</td>
+                <td>
+                    <form:input path="matchingPassword" type="password" name="password2" placeholder="Powtórz hasło"/>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <button class="btn" type="submit">Utwórz</button>
+                </th>
+                </tr>
+                <tr>
+                <th colspan="2"><a href='<c:url value="${pageContext.request.contextPath}/admin/user/all"/>'
+                                   class="w3-button w3-border w3-padding-small w3-red">Anuluj</a></th>
+            </tr>
+            </tbody>
+        </table>
     </form:form>
-</section>
-
+</div>
 <%@include file="../admin/admin-footer.jsp" %>

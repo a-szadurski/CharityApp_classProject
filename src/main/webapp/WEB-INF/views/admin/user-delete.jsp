@@ -34,7 +34,7 @@
                                    value="Tak, usuń"></th>
         </tr>
         <tr>
-            <th colspan="2"><a href='<c:url value="${pageContext.request.contextPath}/admin"/>'
+            <th colspan="2"><a href='<c:url value="${pageContext.request.contextPath}/admin/user/all"/>'
                                class="w3-button w3-border w3-padding-small w3-red">Anuluj</a></th>
         </tr>
         </form:form>

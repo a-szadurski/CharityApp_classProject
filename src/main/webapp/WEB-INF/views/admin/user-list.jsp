@@ -14,7 +14,7 @@
     <table class="w3-table-all">
         <thead>
         <tr>
-            <th colspan="5"><a href='<c:url value="${pageContext.request.contextPath}/admin/institution/add"/>'
+            <th colspan="5"><a href='<c:url value="${pageContext.request.contextPath}/admin/user/add"/>'
                                class="w3-button w3-border w3-padding-small w3-green">Dodaj</a></th>
         </tr>
         <tr>
@@ -29,10 +29,10 @@
                 <td>${user.id}</td>
                 <td>${user.email}</td>
                 <td>
-                    <a href='<c:url value="${pageContext.request.contextPath}/admin/institution/update/${user.id}"/>'
+                    <a href='<c:url value="${pageContext.request.contextPath}/admin/user/update/${user.id}"/>'
                        class="w3-button w3-border w3-padding-small w3-orange">Edytuj</a></td>
                 <td>
-                    <a href='<c:url value="${pageContext.request.contextPath}/admin/institution/delete/${user.id}"/>'
+                    <a href='<c:url value="${pageContext.request.contextPath}/admin/user/delete/${user.id}"/>'
                        class="w3-button w3-border w3-padding-small w3-red">Usuń</a></td>
             </tr>
         </c:forEach>

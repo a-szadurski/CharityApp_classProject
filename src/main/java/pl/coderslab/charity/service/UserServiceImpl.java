@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> findAllUsers() {
         Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName("ROLE_USER"));
-        return userRepository.findAllByRoles(roles).stream()
+        return userRepository.findAllByRolesIn(roles).stream()
                 .map(user -> new UserDto(
                         user.getId(), user.getEmail()
                 )).collect(Collectors.toList());
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
         }
 
-        User user = new User();
+        User user;
 
         Optional<User> userOptional = userRepository.findById(userDto.getId());
 
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isPresent()) {
-            userDto = new UserDto(userOptional.get());
+            userDto = new UserDto(userOptional.get().getId(), userOptional.get().getEmail());
         } else {
             throw new NotFoundException("User not found");
         }
