@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         roles.add(roleRepository.findByName("ROLE_USER"));
         return userRepository.findAllByRolesIn(roles).stream()
                 .map(user -> new UserDto(
-                        user.getId(), user.getEmail()
+                        user.getId(), user.getEmail(), user.isEnabled()
                 )).collect(Collectors.toList());
     }
 
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isPresent()) {
-            userDto = new UserDto(userOptional.get().getId(), userOptional.get().getEmail());
+            userDto = new UserDto(userOptional.get().getId(), userOptional.get().getEmail(), userOptional.get().isEnabled());
         } else {
             throw new NotFoundException("User not found");
         }

@@ -31,12 +31,9 @@
     <div class="w3-container w3-row">
         <div class="w3-col s8 w3-bar">
             <span>Witaj, <strong><sec:authentication property="principal.username"/></strong></span><br>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
             <sec:authorize access="isAuthenticated()">
                 <form action="<c:url value="/logout"/>" method="post">
-                    <input type="submit" value="Wyloguj">
+                    <input type="submit" value="Wyloguj" class="w3-button">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
             </sec:authorize>

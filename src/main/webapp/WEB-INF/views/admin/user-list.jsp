@@ -20,7 +20,8 @@
         <tr>
             <th>Id</th>
             <th>Email</th>
-            <th colspan="2"></th>
+            <th>Aktywny</th>
+            <th colspan="3"></th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <tr>
                 <td>${user.id}</td>
                 <td>${user.email}</td>
+                <td>${user.enabled}</td>
                 <td>
                     <a href='<c:url value="${pageContext.request.contextPath}/admin/user/update/${user.id}"/>'
                        class="w3-button w3-border w3-padding-small w3-orange">Edytuj</a></td>

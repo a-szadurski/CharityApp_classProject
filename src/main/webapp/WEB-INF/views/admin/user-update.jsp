@@ -36,6 +36,10 @@
                 <form:input path="matchingPassword" type="password" name="password2"/>
             </td>
         </tr>
+        <td>Aktywny</td>
+        <td>
+            <form:checkbox path="enabled" cssClass="w3-check"/>
+        </td>
         <tr>
             <th colspan="2">
                 <button class="w3-button w3-border w3-padding-small w3-green" type="submit">Zapisz</button>

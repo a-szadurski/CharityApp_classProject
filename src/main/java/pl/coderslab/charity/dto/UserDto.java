@@ -7,13 +7,10 @@ import pl.coderslab.charity.validation.ValidEmail;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-@Getter
-@Setter
-@EqualsAndHashCode
 @PasswordMatches
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class UserDto {
 
     private Long id;
@@ -31,9 +28,12 @@ public class UserDto {
     @Size(min = 8, max = 25)
     private String matchingPassword;
 
-    public UserDto(Long id, String email) {
+    private boolean enabled;
+
+    public UserDto(Long id, String email,Boolean enabled) {
         this.id = id;
         this.email = email;
+        this.enabled = enabled;
     }
 
     public UserDto(User user) {
