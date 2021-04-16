@@ -9,10 +9,41 @@
 <header class="header--form-page">
     <%@ include file="navbar.jsp" %>
 
-    <div class="slogan container container--90">
+    <div>
         <h2>
-            //admin main page placeholder//
+            Zarządzaj fundacjami:
         </h2>
+    </div>
+    <div class="w3-container">
+        <table class="w3-table-all">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${institutions}" var="institution">
+                <tr>
+                    <td>${institution.id}</td>
+                    <td>${institution.name}</td>
+                    <td>${institution.description}</td>
+                    <td>
+                        <a href='<c:url value="${pageContext.request.contextPath}/admin/institution/update/${institution.id}"/>'
+                           class="w3-button w3-border w3-padding-small">Edytuj</a></td>
+                    <td>
+                        <a href='<c:url value="${pageContext.request.contextPath}/admin/institution/delete/${institution.id}"/>'
+                           class="w3-button w3-border w3-padding-small">Usuń</a></td>
+                </tr>
+            </c:forEach>
+            <tr>
+                <th colspan="5"><a href='<c:url value="${pageContext.request.contextPath}/admin/institution/create"/>'
+                                   class="w3-button w3-border w3-padding-small">Dodaj</a></th>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </header>
 
