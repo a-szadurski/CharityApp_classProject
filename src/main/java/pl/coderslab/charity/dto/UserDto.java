@@ -1,8 +1,7 @@
 package pl.coderslab.charity.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.validation.PasswordMatches;
 import pl.coderslab.charity.validation.ValidEmail;
 
@@ -13,6 +12,8 @@ import javax.validation.constraints.Size;
 @Setter
 @EqualsAndHashCode
 @PasswordMatches
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
 
     private Long id;
@@ -29,5 +30,16 @@ public class UserDto {
     @NotNull(message = "{NotEmpty.user.matchingPassword}")
     @Size(min = 8, max = 25)
     private String matchingPassword;
+
+    public UserDto(Long id, String email) {
+        this.id = id;
+        this.email = email;
+    }
+
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+    }
 
 }

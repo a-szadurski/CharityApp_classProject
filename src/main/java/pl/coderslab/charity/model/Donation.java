@@ -1,7 +1,9 @@
 package pl.coderslab.charity.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.coderslab.charity.dto.DonationDto;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Donation {
 
     @Id
@@ -49,6 +52,19 @@ public class Donation {
         this.pickupTime = pickupTime;
         this.pickupComment = pickupComment;
         this.phoneNumber = phoneNumber;
+        this.categories = categories;
+        this.institution = institution;
+    }
+
+    public Donation(DonationDto donationDto, List<Category> categories, Institution institution) {
+        this.id = donationDto.getId();
+        this.quantity = donationDto.getQuantity();
+        this.street = donationDto.getStreet();
+        this.city = donationDto.getCity();
+        this.zipCode = donationDto.getZipCode();
+        this.pickupDate = donationDto.getPickupDate();
+        this.pickupTime = donationDto.getPickupTime();
+        this.pickupComment = donationDto.getPickupComment();
         this.categories = categories;
         this.institution = institution;
     }

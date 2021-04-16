@@ -1414,6 +1414,11 @@ a {
     background-color: #4CAF50 !important
 }
 
+.w3-red, .w3-hover-red:hover {
+    color: #fff !important;
+    background-color: rgba(170, 0, 0, 0.7) !important
+}
+
 .w3-light-green, .w3-hover-light-green:hover {
     color: #000 !important;
     background-color: #8bc34a !important

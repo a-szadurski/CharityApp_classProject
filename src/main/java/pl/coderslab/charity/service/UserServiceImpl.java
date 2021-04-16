@@ -1,6 +1,6 @@
 package pl.coderslab.charity.service;
 
-import org.springframework.data.domain.Sort;
+import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDto;
@@ -10,9 +10,8 @@ import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -49,8 +48,62 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
-        return userRepository.findAll(sort);
+    public List<UserDto> findAllUsers() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_USER"));
+        return userRepository.findAllByRoles(roles).stream()
+                .map(user -> new UserDto(
+                        user.getId(), user.getEmail()
+                )).collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateUser(UserDto userDto) {
+
+        if (emailExists(userDto.getEmail())) {
+            throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
+        }
+
+        User user = new User();
+
+        Optional<User> userOptional = userRepository.findById(userDto.getId());
+
+        if (userOptional.isPresent()) {
+            user = userOptional.get();
+        } else {
+            throw new NotFoundException("User not found");
+        }
+
+        if (userDto.getEmail() != null && !userDto.getEmail().equals("")) {
+            user.setEmail(userDto.getEmail());
+        }
+
+        if (userDto.getPassword() != null && !userDto.getPassword().equals("")) {
+            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        }
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserDto findById(Long id) {
+
+        UserDto userDto;
+
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            userDto = new UserDto(userOptional.get());
+        } else {
+            throw new NotFoundException("User not found");
+        }
+
+        return userDto;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
     private boolean emailExists(final String email) {

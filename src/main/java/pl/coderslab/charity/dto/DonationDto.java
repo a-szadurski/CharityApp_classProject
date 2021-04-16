@@ -27,4 +27,5 @@ public class DonationDto {
     private List<CategoryDto> categories;
 
     private InstitutionDto institution;
+
 }

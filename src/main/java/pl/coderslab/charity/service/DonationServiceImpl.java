@@ -33,27 +33,11 @@ public class DonationServiceImpl implements DonationService {
     public void saveDonation(DonationDto donationDto) {
 
         List<Category> categories = donationDto.getCategories().stream()
-                .map(cDto -> new Category(cDto.getId(), cDto.getName()))
+                .map(Category::new)
                 .collect(Collectors.toList());
 
-        Institution institution = new Institution(
-                donationDto.getInstitution().getId(),
-                donationDto.getInstitution().getName(),
-                donationDto.getInstitution().getDescription()
-        );
+        Institution institution = new Institution(donationDto.getInstitution());
 
-        donationRepository.save(new Donation(
-                        donationDto.getQuantity(),
-                        donationDto.getStreet(),
-                        donationDto.getCity(),
-                        donationDto.getZipCode(),
-                        donationDto.getPickupDate(),
-                        donationDto.getPickupTime(),
-                        donationDto.getPickupComment(),
-                        donationDto.getPhoneNumber(),
-                        categories,
-                        institution
-                )
-        );
+        donationRepository.save(new Donation(donationDto, categories, institution));
     }
 }

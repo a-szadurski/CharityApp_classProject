@@ -5,11 +5,16 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ include file="header.jsp" %>
-<header>
-    <%@ include file="navbar.jsp" %>
-</header>
-
+<%@ include file="../admin/admin-menu.jsp" %>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <h2>
+        Dodaj użytkownika:
+    </h2>
+</div>
 <section class="login-page">
     <h2>Załóż konto</h2>
     <form:form method="post" modelAttribute="user">
@@ -24,16 +29,9 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <button class="btn" type="submit">Utwórz</button>
         </div>
     </form:form>
 </section>
 
-<%@include file="footer.jsp" %>
-
-
-<script src="<c:url value="/resources/js/app.js"/>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
-</html>
+<%@include file="../admin/admin-footer.jsp" %>

@@ -1,6 +1,5 @@
 package pl.coderslab.charity.service;
 
-import org.springframework.data.domain.Sort;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.model.User;
 
@@ -12,5 +11,11 @@ public interface UserService {
 
     void saveUser(UserDto userDto);
 
-    List<User> findAll(Sort sort);
+    List<UserDto> findAllUsers();
+
+    void updateUser(UserDto userDto);
+
+    UserDto findById(Long id);
+
+    void deleteById(Long id);
 }

@@ -60,7 +60,7 @@
 
     <div class="form--steps-container">
 
-            <div class="form--steps-counter">Krok <span>1</span>/4</div>
+        <div class="form--steps-counter">Krok <span>1</span>/4</div>
         <form:form method="post" modelAttribute="donation">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
@@ -74,7 +74,7 @@
                                     cssClass="category ${category.name}"
                                     value="${category.id}"
                                     path="categories"
-                                    label="${category.name}" onclick="noResult" />
+                                    label="${category.name}" onclick="noResult"/>
                         </label>
                     </div>
                 </c:forEach>
@@ -90,7 +90,8 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input type="number" cssClass="donate-quantity" step="1" min="1" default="1" path="quantity"/>
+                        <form:input type="number" cssClass="donate-quantity" step="1" min="1" default="1"
+                                    path="quantity"/>
                     </label>
                 </div>
 
@@ -105,18 +106,19 @@
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
                 <c:forEach items="${institutions}" var="institution">
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <form:radiobutton cssClass="institution ${institution.name}" path="institution" value="${institution.id}" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
+                    <div class="form-group form-group--checkbox">
+                        <label>
+                            <form:radiobutton cssClass="institution ${institution.name}" path="institution"
+                                              value="${institution.id}"/>
+                            <span class="checkbox radio"></span>
+                            <span class="description">
                   <div class="title">${institution.name}</div>
                   <div class="subtitle">
-                    ${institution.description}
+                          ${institution.description}
                   </div>
                 </span>
-                    </label>
-                </div>
+                        </label>
+                    </div>
                 </c:forEach>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -155,11 +157,13 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" cssClass="donate-pickupdate" path="pickupDate"/></label>
+                            <label> Data <form:input type="date" cssClass="donate-pickupdate"
+                                                     path="pickupDate"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" cssClass="donate-pickuptime" path="pickupTime"/></label>
+                            <label> Godzina <form:input type="time" cssClass="donate-pickuptime"
+                                                        path="pickupTime"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -182,7 +186,7 @@
 
                 <div class="summary">
                     <div class="form-section">
-                        <h4>Oddajesz worków: <span id="summaryQuantity"></span> </h4>
+                        <h4>Oddajesz worków: <span id="summaryQuantity"></span></h4>
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
