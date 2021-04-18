@@ -46,6 +46,7 @@ public class Donation {
         this.pickupDate = donationDto.getPickupDate();
         this.pickupTime = donationDto.getPickupTime();
         this.pickupComment = donationDto.getPickupComment();
+        this.phoneNumber = donationDto.getPhoneNumber();
         this.categories = categories;
         this.institution = institution;
         this.user = user;
