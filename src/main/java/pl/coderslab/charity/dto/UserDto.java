@@ -1,12 +1,15 @@
 package pl.coderslab.charity.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.validation.PasswordMatches;
 import pl.coderslab.charity.validation.ValidEmail;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 @PasswordMatches
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +33,7 @@ public class UserDto {
 
     private boolean enabled;
 
-    public UserDto(Long id, String email,Boolean enabled) {
+    public UserDto(Long id, String email, Boolean enabled) {
         this.id = id;
         this.email = email;
         this.enabled = enabled;

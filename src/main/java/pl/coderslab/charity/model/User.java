@@ -9,7 +9,6 @@ import pl.coderslab.charity.validation.ValidEmail;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,12 +21,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
 
     @ValidEmail
     @NotNull
     @Size(min = 1, message = "{Size.userDto.email}")
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -41,4 +40,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
-    }
+}

@@ -22,7 +22,7 @@
         <tr>
             <td>Email</td>
             <td>
-                <form:input type="email" path="email" name="email" />
+                <form:input type="email" path="email" name="email"/>
             </td>
         </tr>
         <tr>
@@ -54,4 +54,4 @@
     </form:form>
 
 
-<%@include file="../admin/admin-footer.jsp" %>
+    <%@include file="../admin/admin-footer.jsp" %>

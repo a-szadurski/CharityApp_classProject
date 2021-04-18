@@ -28,7 +28,7 @@
             <tr>
                 <td>Hasło</td>
                 <td>
-                        <form:input path="password" type="password" name="password" placeholder="Hasło"/>
+                    <form:input path="password" type="password" name="password" placeholder="Hasło"/>
                 </td>
             <tr>
                 <td>Powtórz hasło</td>
@@ -40,8 +40,8 @@
                 <th colspan="2">
                     <button class="btn" type="submit">Utwórz</button>
                 </th>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <th colspan="2"><a href='<c:url value="${pageContext.request.contextPath}/admin/user/all"/>'
                                    class="w3-button w3-border w3-padding-small w3-red">Anuluj</a></th>
             </tr>

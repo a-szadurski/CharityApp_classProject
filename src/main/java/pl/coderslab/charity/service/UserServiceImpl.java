@@ -10,7 +10,6 @@ import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
-import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -82,26 +81,6 @@ public class UserServiceImpl implements UserService {
         }
 
         if (userDto.getEmail() != null && !userDto.getEmail().equals("")) {
-            user.setEmail(userDto.getEmail());
-        }
-
-        if (userDto.getPassword() != null && !userDto.getPassword().equals("")) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        }
-
-        if (emailExists(userDto.getEmail())) {
-            throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
-        }
-
-        userRepository.save(user);
-    }
-
-    @Override
-    public void updateUser(UserDto userDto, Principal principal) {
-
-        User user = findByEmail(userDto.getEmail());
-
-        if (userDto.getEmail() != null && !userDto.getEmail().equals("") && !userDto.getEmail().equals(principal.getName())) {
             user.setEmail(userDto.getEmail());
         }
 

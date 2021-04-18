@@ -3,9 +3,11 @@ package pl.coderslab.charity.web;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.UserDto;
-import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.UserService;
 
 import java.security.Principal;
@@ -32,8 +34,8 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto, Principal principal) {
-        userService.updateUser(userDto, principal);
+    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto) {
+        userService.updateUser(userDto);
         return "redirect:/user/profile";
     }
 }
