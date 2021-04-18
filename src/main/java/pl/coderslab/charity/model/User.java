@@ -1,9 +1,7 @@
 package pl.coderslab.charity.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.validation.ValidEmail;
 
 import javax.persistence.*;
@@ -17,6 +15,7 @@ import java.util.Set;
 @Setter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -40,4 +39,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
+
+    public User(UserDto userDto){
+        this.id = userDto.getId();
+        this.email = userDto.getEmail();
+        this.password = userDto.getPassword();
+        this.enabled = userDto.isEnabled();
+    }
 }

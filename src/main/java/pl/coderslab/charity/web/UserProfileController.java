@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.UserDto;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.UserService;
 
 import java.security.Principal;
@@ -34,8 +35,13 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto) {
-        userService.updateUser(userDto);
-        return "redirect:/user/profile";
+    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto, Principal principal) {
+
+        User user = userService.findByEmail(principal.getName());
+
+        log.debug("{} user by principalName: {}", this.getClass(), user);
+
+        userService.updateUser(userDto, user);
+        return "redirect:/logout";
     }
 }

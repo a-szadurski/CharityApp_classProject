@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.dto.UserDto;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.UserService;
 
 @Controller
@@ -53,8 +54,8 @@ public class AdminSuperUsersCrudController {
     }
 
     @PostMapping("/update/{id}")
-    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto) {
-        userService.updateUser(userDto);
+    public String executeUpdateForm(@ModelAttribute("user") UserDto userDto, @PathVariable Long id) {
+        userService.updateUser(userDto, new User(userDto));
         return USERS_LIST;
     }
 

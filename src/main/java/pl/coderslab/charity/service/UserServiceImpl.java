@@ -68,31 +68,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(UserDto userDto) {
+    public void updateUser(UserDto userDto, User user) {
 
-        User user;
-
-        Optional<User> userOptional = userRepository.findById(userDto.getId());
-
-        if (userOptional.isPresent()) {
-            user = userOptional.get();
-        } else {
-            throw new NotFoundException("User not found");
-        }
-
-        if (userDto.getEmail() != null && !userDto.getEmail().equals("")) {
-            user.setEmail(userDto.getEmail());
-        }
-
-        if (userDto.getPassword() != null && !userDto.getPassword().equals("")) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        }
-
-        if (emailExists(userDto.getEmail())) {
-            throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
-        }
-
-        userRepository.save(user);
+        updateUsername(userDto.getEmail(), user.getId());
+        updatePassword(userDto.getPassword(), user);
     }
 
     @Override
@@ -116,7 +95,24 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+
     private boolean emailExists(final String email) {
         return userRepository.findByEmail(email) != null;
+    }
+
+    private void updateUsername(String email, Long id) {
+
+        if (emailExists(email)) {
+            return;
+        }
+        userRepository.updateUsername(email, id);
+    }
+
+    private void updatePassword(String password, User user) {
+
+        String passwordEncoded = passwordEncoder.encode(password);
+
+        userRepository.updatePassword(passwordEncoded, user.getId());
+
     }
 }
