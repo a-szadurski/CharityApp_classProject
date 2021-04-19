@@ -27,6 +27,9 @@ public class Donation {
     private LocalTime pickupTime;
     private String pickupComment;
     private String phoneNumber;
+    private boolean pickupStatus;
+    private LocalDate entryDate;
+    private LocalDate pickupStatusDate;
 
     @ManyToMany
     private List<Category> categories;
@@ -47,6 +50,9 @@ public class Donation {
         this.pickupTime = donationDto.getPickupTime();
         this.pickupComment = donationDto.getPickupComment();
         this.phoneNumber = donationDto.getPhoneNumber();
+        this.pickupStatus = donationDto.isPickupStatus();
+        this.entryDate = donationDto.getEntryDate();
+        this.pickupStatusDate = donationDto.getPickupStatusDate();
         this.categories = categories;
         this.institution = institution;
         this.user = user;

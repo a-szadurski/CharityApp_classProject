@@ -20,6 +20,8 @@
         <li><a href='<c:url value="${pageContext.request.contextPath}/institutions"/>' class="btn btn--without-border">Fundacje
             i organizacje</a></li>
         <li><a href='<c:url value="${pageContext.request.contextPath}/contact"/>' class="btn btn--without-border">Kontakt</a>
+        <li><a href='<c:url value="${pageContext.request.contextPath}/user/donation/list"/>'
+               class="btn btn--without-border">Moje dary</a>
         </li>
     </ul>
 </nav>

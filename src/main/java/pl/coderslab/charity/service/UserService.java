@@ -15,7 +15,7 @@ public interface UserService {
 
     List<UserDto> findAllSuperUsers();
 
-   void updateUser(UserDto userDto, User user);
+    void updateUser(UserDto userDto, User user);
 
     UserDto findById(Long id);
 

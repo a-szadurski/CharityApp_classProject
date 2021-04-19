@@ -40,7 +40,7 @@ public class User {
     )
     private Set<Role> roles;
 
-    public User(UserDto userDto){
+    public User(UserDto userDto) {
         this.id = userDto.getId();
         this.email = userDto.getEmail();
         this.password = userDto.getPassword();

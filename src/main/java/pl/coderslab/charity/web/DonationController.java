@@ -17,6 +17,7 @@ import pl.coderslab.charity.service.InstitutionServiceImpl;
 import pl.coderslab.charity.service.UserService;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -50,7 +51,7 @@ public class DonationController {
         model.addAttribute("donation", new DonationDto());
         model.addAttribute("institutions", institutions);
 
-        return "user/form";
+        return "user/donation-add";
     }
 
     @PostMapping
@@ -60,6 +61,8 @@ public class DonationController {
 
         User user = userService.findByEmail(principal.getName());
 
+        donation.setEntryDate(LocalDate.now());
+
         donationService.saveDonation(donation, user);
 
         return "redirect:/user/donate/confirm";
@@ -67,7 +70,7 @@ public class DonationController {
 
     @GetMapping("/confirm")
     public String formConfirm() {
-        return "user/form-confirmation";
+        return "user/donation-confirm";
     }
 
 }

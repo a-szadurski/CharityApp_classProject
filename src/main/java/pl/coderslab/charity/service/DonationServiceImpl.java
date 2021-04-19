@@ -8,6 +8,7 @@ import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +41,21 @@ public class DonationServiceImpl implements DonationService {
         Institution institution = new Institution(donationDto.getInstitution());
 
         donationRepository.save(new Donation(donationDto, categories, institution, user));
+    }
+
+    @Override
+    public List<DonationDto> findAllByUserPickupStatusAscPickupDateDescEntryDateDesc(Long id) {
+        return donationRepository.findAllByUserPickupStatusAscPickupDateDescEntryDateDesc(id).stream()
+                .map(DonationDto::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public DonationDto findByIdAndUser(Long donationId, Long userId) {
+        return new DonationDto(donationRepository.findByIdAndUser(donationId, userId));
+    }
+
+    @Override
+    public void updateStatus(LocalDate date, Long id) {
+        donationRepository.updatePickupStatus(date, id);
     }
 }
