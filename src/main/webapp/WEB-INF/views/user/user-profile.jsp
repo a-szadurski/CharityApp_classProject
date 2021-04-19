@@ -7,7 +7,7 @@
 
 <%@ include file="../header.jsp" %>
 <header>
-    <%@ include file="../navbar.jsp" %>
+    <%@ include file="../user/navbar-logged.jsp" %>
 </header>
 
 <section class="login-page">

@@ -7,7 +7,7 @@
 
 <%@ include file="../header.jsp" %>
 <header class="header--form-page">
-    <%@ include file="../navbar.jsp" %>
+    <%@ include file="../user/navbar-logged.jsp" %>
 
     <div class="slogan container container--90">
         <h2>
