@@ -1,4 +1,7 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+A mock-up Charity application allowing people to register and donate unneeded items to be picked up by the organization and delivered to specified charity. 
+Based on Spring Boot/MVC/Hibernate/Security.
+
+(Below are the original course instructions in Polish)
 
 
 Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.

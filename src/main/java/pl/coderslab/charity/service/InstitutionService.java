@@ -9,4 +9,9 @@ public interface InstitutionService {
     List<InstitutionDto> findAllSortAscById();
 
     InstitutionDto findById(Long id);
+
+    void deleteById(Long id);
+
+    void saveDtoToEntity(InstitutionDto institutionDto);
+
 }

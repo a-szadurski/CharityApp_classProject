@@ -5,13 +5,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <header>
-    <%@ include file="navbar.jsp" %>
+    <%@ include file="../user/navbar-logged.jsp" %>
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
+    <h2>Edytuj Profil</h2>
     <form:form method="post" modelAttribute="user">
         <div class="form-group">
             <form:input type="email" path="email" name="email" placeholder="Email"/>
@@ -24,13 +24,12 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <button class="btn" type="submit">Zapisz</button>
         </div>
     </form:form>
 </section>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
 
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>

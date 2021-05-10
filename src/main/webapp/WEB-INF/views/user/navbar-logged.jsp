@@ -4,15 +4,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <nav class="container container--70">
     <ul class="nav--actions">
-        <li><a href='<c:url value="${pageContext.request.contextPath}/login"/>'
-               class="btn btn--small btn--without-border">Zaloguj</a></li>
-        <li><a href='<c:url value="${pageContext.request.contextPath}/register"/>'
-               class="btn btn--small btn--highlighted">Załóż konto</a></li>
+        <li><a href='<c:url value="${pageContext.request.contextPath}/logout"/>'
+               class="btn btn--small btn--without-border">Wyloguj</a></li>
+        <li><a href='<c:url value="${pageContext.request.contextPath}/user/profile"/>'
+               class="btn btn--small btn--highlighted">Profil</a></li>
     </ul>
 
     <ul>
-        <li><a href='<c:url value="${pageContext.request.contextPath}/"/>'
-               class="btn btn--without-border active">Start</a></li>
+        <li><a href='<c:url value="${pageContext.request.contextPath}/user/donate"/>'
+               class="btn btn--without-border active">Przekaż dar</a></li>
         <li><a href='<c:url value="${pageContext.request.contextPath}/mission"/>' class="btn btn--without-border">O co
             chodzi?</a></li>
         <li><a href='<c:url value="${pageContext.request.contextPath}/about"/>' class="btn btn--without-border">O
@@ -20,6 +20,8 @@
         <li><a href='<c:url value="${pageContext.request.contextPath}/institutions"/>' class="btn btn--without-border">Fundacje
             i organizacje</a></li>
         <li><a href='<c:url value="${pageContext.request.contextPath}/contact"/>' class="btn btn--without-border">Kontakt</a>
+        <li><a href='<c:url value="${pageContext.request.contextPath}/user/donation/list"/>'
+               class="btn btn--without-border">Moje dary</a>
         </li>
     </ul>
 </nav>

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminPanelController {
+public class AdminHomeController {
 
     @GetMapping
-    public String displayAdminPanelHome() {
-        return "admin-home";
+    public String displayAdminPanel() {
+        return "redirect:/admin/institution/all";
     }
 }

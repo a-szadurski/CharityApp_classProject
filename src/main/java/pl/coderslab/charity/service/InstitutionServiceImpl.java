@@ -23,13 +23,23 @@ public class InstitutionServiceImpl implements InstitutionService {
         return institutionRepository
                 .findAll(Sort.by(Sort.Direction.ASC, "id"))
                 .stream()
-                .map(institution -> new InstitutionDto(institution.getId(), institution.getName(), institution.getDescription()))
+                .map(InstitutionDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     public InstitutionDto findById(Long id) {
         Institution institution = institutionRepository.findInstitutionById(id);
-        return new InstitutionDto(institution.getId(), institution.getName(), institution.getDescription());
+        return new InstitutionDto(institution);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        institutionRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveDtoToEntity(InstitutionDto institutionDto) {
+        institutionRepository.save(new Institution(institutionDto));
     }
 }

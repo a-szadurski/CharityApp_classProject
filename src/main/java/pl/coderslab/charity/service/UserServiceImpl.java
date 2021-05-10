@@ -1,6 +1,6 @@
 package pl.coderslab.charity.service;
 
-import org.springframework.data.domain.Sort;
+import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDto;
@@ -10,9 +10,8 @@ import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -49,11 +48,71 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
-        return userRepository.findAll(sort);
+    public List<UserDto> findAllUsers() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_USER"));
+        return userRepository.findAllByRolesIn(roles).stream()
+                .map(user -> new UserDto(
+                        user.getId(), user.getEmail(), user.isEnabled()
+                )).collect(Collectors.toList());
     }
+
+    @Override
+    public List<UserDto> findAllSuperUsers() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_ADMIN"));
+        return userRepository.findAllByRolesIn(roles).stream()
+                .map(user -> new UserDto(
+                        user.getId(), user.getEmail(), user.isEnabled()
+                )).collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateUser(UserDto userDto, User user) {
+
+        updateUsername(userDto.getEmail(), user.getId());
+        updatePassword(userDto.getPassword(), user);
+    }
+
+    @Override
+    public UserDto findById(Long id) {
+
+        UserDto userDto;
+
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            userDto = new UserDto(userOptional.get().getId(), userOptional.get().getEmail(), userOptional.get().isEnabled());
+        } else {
+            throw new NotFoundException("User not found");
+        }
+
+        return userDto;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
+
 
     private boolean emailExists(final String email) {
         return userRepository.findByEmail(email) != null;
+    }
+
+    private void updateUsername(String email, Long id) {
+
+        if (emailExists(email)) {
+            return;
+        }
+        userRepository.updateUsername(email, id);
+    }
+
+    private void updatePassword(String password, User user) {
+
+        String passwordEncoded = passwordEncoder.encode(password);
+
+        userRepository.updatePassword(passwordEncoded, user.getId());
+
     }
 }

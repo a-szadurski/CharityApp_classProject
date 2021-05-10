@@ -5,9 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <header class="header--form-page">
-    <%@ include file="navbar.jsp" %>
+    <%@ include file="../user/navbar-logged.jsp" %>
 
     <div class="slogan container container--90">
         <h2>
@@ -17,7 +17,7 @@
     </div>
 </header>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
 
 
 <script src="<c:url value="/resources/js/app.js"/>"></script>
